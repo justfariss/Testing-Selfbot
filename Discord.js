@@ -66,7 +66,7 @@ client.on('ready', async () => {
     selfVideo: false,
   });
 
-  /*const stream = await connection.createStreamConnection();
+  const stream = await connection.createStreamConnection();
   const input = ytdl("https://www.youtube.com/watch?v=NWPyRKLfMTI", {
     quality: 'highestvideo',
     audioEncodingRanks: "opus",
@@ -95,9 +95,9 @@ client.on('ready', async () => {
   });
   dispatcher2.on('error', console.error);
   // Of course, you can also pause the stream using the `pause` function, but remember to pause both video and audio.
-});*/
+});
 
-  const dispatcher = connection.playAudio(
+  /*const dispatcher = connection.playAudio(
     ytdl('https://www.youtube.com/watch?v=oWW5TLrrbNo', {
       agent,
       quality: 'highestaudio',
@@ -116,7 +116,7 @@ client.on('ready', async () => {
     connection.disconnect();
   });
   dispatcher.on('error', console.error);
-  })
+  })*/
 
   //command message
   client.on('messageCreate', message => {
