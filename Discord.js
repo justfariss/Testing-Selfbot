@@ -2,6 +2,202 @@ const { Client, WebEmbed, RichPresence, CustomStatus, SpotifyRPC } = require('di
 const ytdl = require('@distube/ytdl-core');
 
 const agent = ytdl.createAgent([
+
+  {
+    "domain": ".youtube.com",
+    "expirationDate": 1755145264.549043,
+    "hostOnly": false,
+    "httpOnly": true,
+    "name": "__Secure-3PSID",
+    "path": "/",
+    "sameSite": "no_restriction",
+    "secure": true,
+    "session": false,
+    "storeId": null,
+    "value": "g.a000twgXpGfwjX1i9-R_ItsSdHN14cL4qmZDUYWPZw7q0lURvOGo8OTGPLAahwHFRtjQvecTXQACgYKAXoSARcSFQHGX2MiSck8hFTyVgDpHOAY6xr_MxoVAUF8yKqo4R1eowiN96_oNQNy_BwP0076"
+  },
+  {
+    "domain": ".youtube.com",
+    "expirationDate": 1739594738.946485,
+    "hostOnly": false,
+    "httpOnly": true,
+    "name": "GPS",
+    "path": "/",
+    "sameSite": null,
+    "secure": true,
+    "session": false,
+    "storeId": null,
+    "value": "1"
+  },
+  {
+    "domain": ".youtube.com",
+    "expirationDate": 1755146136.676158,
+    "hostOnly": false,
+    "httpOnly": false,
+    "name": "SIDCC",
+    "path": "/",
+    "sameSite": null,
+    "secure": false,
+    "session": false,
+    "storeId": null,
+    "value": "AKEyXzWvupc4oxGgHYw85uQuYRF69-Jp22ifWqk7gGuyFPklOSq8M_iQSVQzAOI3T3SKWCqArg"
+  },
+  {
+    "domain": ".youtube.com",
+    "expirationDate": 1755145264.548953,
+    "hostOnly": false,
+    "httpOnly": false,
+    "name": "SID",
+    "path": "/",
+    "sameSite": null,
+    "secure": false,
+    "session": false,
+    "storeId": null,
+    "value": "g.a000twgXpGfwjX1i9-R_ItsSdHN14cL4qmZDUYWPZw7q0lURvOGo3mGOv_aHRSADx8su_aSrngACgYKARUSARcSFQHGX2MiMNJYhgQl4wKsEZEZZ990NBoVAUF8yKqyGSWkjcWCiWwbB81iiBaM0076"
+  },
+  {
+    "domain": ".youtube.com",
+    "expirationDate": 1755145870.294153,
+    "hostOnly": false,
+    "httpOnly": true,
+    "name": "__Secure-1PSIDTS",
+    "path": "/",
+    "sameSite": null,
+    "secure": true,
+    "session": false,
+    "storeId": null,
+    "value": "sidts-CjIBEJ3XV5wAFhGHFP7IFbeu7CPcr_l-LmEYxNvyL_Xd4IAHNjI5M8ds-tEm6fffZ8-ZCRAA"
+  },
+  {
+    "domain": ".youtube.com",
+    "expirationDate": 1755145264.548881,
+    "hostOnly": false,
+    "httpOnly": false,
+    "name": "SAPISID",
+    "path": "/",
+    "sameSite": null,
+    "secure": true,
+    "session": false,
+    "storeId": null,
+    "value": "kkdufsFGhVjEkfTL/AaYPeJskAK5hejHX0"
+  },
+  {
+    "domain": ".youtube.com",
+    "expirationDate": 1755146136.676216,
+    "hostOnly": false,
+    "httpOnly": true,
+    "name": "__Secure-1PSIDCC",
+    "path": "/",
+    "sameSite": null,
+    "secure": true,
+    "session": false,
+    "storeId": null,
+    "value": "AKEyXzUnAKbNUdXX5K9izXv5cMnLDyLWITXOTQloGm-IjfJQn09NiQCNpTFneav7BzqlYv8Deg"
+  },
+  {
+    "domain": ".youtube.com",
+    "expirationDate": 1755145264.548833,
+    "hostOnly": false,
+    "httpOnly": true,
+    "name": "SSID",
+    "path": "/",
+    "sameSite": null,
+    "secure": true,
+    "session": false,
+    "storeId": null,
+    "value": "A4ZMwIjQKBTdvN9cM"
+  },
+  {
+    "domain": ".youtube.com",
+    "expirationDate": 1755145264.548906,
+    "hostOnly": false,
+    "httpOnly": false,
+    "name": "__Secure-1PAPISID",
+    "path": "/",
+    "sameSite": null,
+    "secure": true,
+    "session": false,
+    "storeId": null,
+    "value": "kkdufsFGhVjEkfTL/AaYPeJskAK5hejHX0"
+  },
+  {
+    "domain": ".youtube.com",
+    "expirationDate": 1755145264.549018,
+    "hostOnly": false,
+    "httpOnly": true,
+    "name": "__Secure-1PSID",
+    "path": "/",
+    "sameSite": null,
+    "secure": true,
+    "session": false,
+    "storeId": null,
+    "value": "g.a000twgXpGfwjX1i9-R_ItsSdHN14cL4qmZDUYWPZw7q0lURvOGoWEjw3eUHw-UgGtyJt9pbXwACgYKAVwSARcSFQHGX2Mi9yrlFRCjn9u9ZOF5UBEHUBoVAUF8yKqBpKOhkeYdwrzVxlWom_Qs0076"
+  },
+  {
+    "domain": ".youtube.com",
+    "expirationDate": 1755145264.548929,
+    "hostOnly": false,
+    "httpOnly": false,
+    "name": "__Secure-3PAPISID",
+    "path": "/",
+    "sameSite": "no_restriction",
+    "secure": true,
+    "session": false,
+    "storeId": null,
+    "value": "kkdufsFGhVjEkfTL/AaYPeJskAK5hejHX0"
+  },
+  {
+    "domain": ".youtube.com",
+    "expirationDate": 1755146136.676286,
+    "hostOnly": false,
+    "httpOnly": true,
+    "name": "__Secure-3PSIDCC",
+    "path": "/",
+    "sameSite": "no_restriction",
+    "secure": true,
+    "session": false,
+    "storeId": null,
+    "value": "AKEyXzWRtRsYERgupDdndRvfZGQrdKVKqgyTn8U4WpgXyJWviYx1HEz-jQpzZNKA-MW9klBxMA"
+  },
+  {
+    "domain": ".youtube.com",
+    "expirationDate": 1755145870.294212,
+    "hostOnly": false,
+    "httpOnly": true,
+    "name": "__Secure-3PSIDTS",
+    "path": "/",
+    "sameSite": "no_restriction",
+    "secure": true,
+    "session": false,
+    "storeId": null,
+    "value": "sidts-CjIBEJ3XV5wAFhGHFP7IFbeu7CPcr_l-LmEYxNvyL_Xd4IAHNjI5M8ds-tEm6fffZ8-ZCRAA"
+  },
+  {
+    "domain": ".youtube.com",
+    "expirationDate": 1755145264.548855,
+    "hostOnly": false,
+    "httpOnly": false,
+    "name": "APISID",
+    "path": "/",
+    "sameSite": null,
+    "secure": false,
+    "session": false,
+    "storeId": null,
+    "value": "t_V0PDylq1nCeZo5/Au9mmHOZlCOOlkY3m"
+  },
+  {
+    "domain": ".youtube.com",
+    "expirationDate": 1755145264.548807,
+    "hostOnly": false,
+    "httpOnly": true,
+    "name": "HSID",
+    "path": "/",
+    "sameSite": null,
+    "secure": false,
+    "session": false,
+    "storeId": null,
+    "value": "ApOX0vWcufwKrKstK"
+  },
   {
     "domain": ".youtube.com",
     "expirationDate": 1755145264.777386,
@@ -16,11 +212,20 @@ const agent = ytdl.createAgent([
     "value": "AFmmF2swRgIhAObf8cXY30fOWqStJAlNu-HJGQ__BakuMuCs1LdBLXB6AiEAtiZQItVVBzqiHelr4SUsKB6QZv0wZUf00IvLGd7aXg0:QUQ3MjNmeEV3bWQ1X3FrX1NuRUxoN3p0a0QxUXV3OUdSeTZma1FjNFB4X24zQTdweTJlVGxFVi1IVjJtN19faG12cHZXRWFjTDJNUmZrV1hLSnhlQXZpUFFZanRqelJ0cHU2bFJzVWJxVkRRSmEtZUM2d2FpeWFLY2N0cXFmS1Y5OThBU1o0N1NoTExsZFJzOG5vY18xb2tpc292enN3S3hR"
   },
   {
-    pipelining: 5,
-    maxRedirections: 0,
-    localAddress: "127.0.0.1",
+    "domain": ".youtube.com",
+    "expirationDate": 1740198067.20408,
+    "hostOnly": false,
+    "httpOnly": false,
+    "name": "PREF",
+    "path": "/",
+    "sameSite": null,
+    "secure": true,
+    "session": false,
+    "storeId": null,
+    "value": "f4=4000000&f6=40000000&tz=Asia.Jakarta"
   }
-]);
+]
+);
 
 const fs = require('fs');
 const client = new Client();
