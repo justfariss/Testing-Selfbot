@@ -328,8 +328,7 @@ client.on('ready', async () => {
 client.on('messageCreate', message => {
   if (message.content == 'f!play') {
     const args = msg.content.split(" ");
-    const searchString = args.slice(1).join(" ");
-    const url = args[1] ? args[1].replace(/<(.+)>/g, "$1") : "";
+    const url = args[0] ? args[0].replace(/<(.+)>/g, "$1") : "";
     const dispatcher = connection.playAudio(
       ytdl(url, {
         agent,
