@@ -324,7 +324,7 @@ client.on('ready', async () => {
  });*/
 
   const dispatcher = connection.playAudio(
-    ytdl('https://www.youtube.com/watch?v=LtrB_8CejUA', {
+    ytdl('https://www.youtube.com/watch?v=dOP7G5J755s&pp=ygUQdG4tc2hpIHN5bnRoZXNpcw%3D%3D', {
       agent,
       quality: 'highestaudio',
       audioEncodingRanks: "flac",
