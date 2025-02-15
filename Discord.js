@@ -279,57 +279,56 @@ client.on('ready', async () => {
     selfVideo: false,
   });
 
- /*const stream = await connection.createStreamConnection();
-  const input = ytdl("https://www.youtube.com/watch?v=oWW5TLrrbNo", {
-    agent,
-    quality: 'highestvideo',
-    audioEncodingRanks: "flac",
-    videoEncodingRanks: "H.264"
-  })
+  /*const stream = await connection.createStreamConnection();
+   const input = ytdl("https://www.youtube.com/watch?v=oWW5TLrrbNo", {
+     agent,
+     audioEncodingRanks: "flac",
+     videoEncodingRanks: "H.264"
+   })
+ 
+   const dispatcher = stream.playVideo(input, {
+     fps: 60,
+     bitrate: 1024,
+   });
+   const dispatcher2 = stream.playAudio(input);
+   //video
+   dispatcher.on('start', () => {
+     console.log('video is now playing!');
+   });
+   dispatcher.on('finish', () => {
+     console.log('video has finished playing!');
+   });
+   dispatcher.on('error', console.error);
+   //audio
+   dispatcher2.on('start', () => {
+     console.log('audio is now playing!');
+   });
+   dispatcher2.on('finish', () => {
+     console.log('audio has finished playing!');
+   });
+   dispatcher2.on('error', console.error);
+   // Of course, you can also pause the stream using the `pause` function, but remember to pause both video and audio.
+ });*/
 
-  const dispatcher = stream.playVideo(input, {
-    fps: 60,
-    bitrate: 1024,
-  });
-  const dispatcher2 = stream.playAudio(input);
-  //video
+  const dispatcher = connection.playAudio(
+    ytdl('https://www.youtube.com/watch?v=LtrB_8CejUA', {
+      agent,
+      quality: 'highestaudio',
+      audioEncodingRanks: "flac",
+    })
+  );
+
   dispatcher.on('start', () => {
-    console.log('video is now playing!');
+    console.log('audio is now playing!');
+    dispatcher.setVolume(0.05);
+    console.log('100% volume');
   });
+
   dispatcher.on('finish', () => {
-    console.log('video has finished playing!');
+    console.log('audio has finished playing!');
+    connection.disconnect();
   });
   dispatcher.on('error', console.error);
-  //audio
-  dispatcher2.on('start', () => {
-    console.log('audio is now playing!');
-  });
-  dispatcher2.on('finish', () => {
-    console.log('audio has finished playing!');
-  });
-  dispatcher2.on('error', console.error);
-  // Of course, you can also pause the stream using the `pause` function, but remember to pause both video and audio.
-});*/
-
-const dispatcher = connection.playAudio(
-  ytdl('https://www.youtube.com/watch?v=oWW5TLrrbNo', {
-    agent,
-    quality: 'highestaudio',
-    audioEncodingRanks: "flac",
-  })
-);
-
-dispatcher.on('start', () => {
-  console.log('audio is now playing!');
-  dispatcher.setVolume(0.05);
-  console.log('100% volume');
-});
-
-dispatcher.on('finish', () => {
-  console.log('audio has finished playing!');
-  connection.disconnect();
-});
-dispatcher.on('error', console.error);
 })
 
 //command message
