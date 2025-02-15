@@ -322,14 +322,16 @@ client.on('ready', async () => {
    dispatcher2.on('error', console.error);
    // Of course, you can also pause the stream using the `pause` function, but remember to pause both video and audio.
    */
- })
+})
 
 //command message
 client.on('messageCreate', message => {
   if (message.content == 'f!play') {
-    const args = message.content.split(" ");
+    const args = msg.content.split(" ");
+    const searchString = args.slice(1).join(" ");
+    const url = args[1] ? args[1].replace(/<(.+)>/g, "$1") : "";
     const dispatcher = connection.playAudio(
-      ytdl(args, {
+      ytdl(url, {
         agent,
         quality: 'highestaudio',
         audioEncodingRanks: "flac",
@@ -338,13 +340,13 @@ client.on('messageCreate', message => {
         begin: Date.now() // Add a timestamp to avoid cached throttled streams
       })
     );
-  
+
     dispatcher.on('start', () => {
       dispatcher.setVolume(0.05);
       console.log('100% volume');
       console.log('audio is now playing!');
     });
-  
+
     dispatcher.on('finish', () => {
       console.log('audio has finished playing!');
       connection.disconnect();
