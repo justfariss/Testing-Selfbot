@@ -1,0 +1,21 @@
+{
+  "name": "discord-bot",
+  "version": "1.0.0",
+  "main": "Discord.js",
+  "scripts": {
+    "test": "node Discord.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "@discordjs/opus": "^0.10.0",
+    "@distube/ytdl-core": "^4.16.4",
+    "@stablelib/xchacha20poly1305": "^2.0.1",
+    "discord.js-selfbot-v13": "^3.5.1",
+    "ffmpeg": "^0.0.4",
+    "fs": "^0.0.1-security",
+    "libsodium-wrappers": "^0.7.15",
+    "opusscript": "^0.0.8"
+  }
+}
