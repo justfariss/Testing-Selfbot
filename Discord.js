@@ -324,7 +324,7 @@ client.on('ready', async () => {
  });*/
 
   const dispatcher = connection.playAudio(
-    ytdl('https://www.youtube.com/watch?v=dOP7G5J755s&pp=ygUQdG4tc2hpIHN5bnRoZXNpcw%3D%3D', {
+    ytdl('https://www.youtube.com/watch?v=gDM4tllA2o4&list=PLgYAivc85cgZ5MY9YjGigvNJZNzZr0Rl3', {
       agent,
       quality: 'highestaudio',
       audioEncodingRanks: "flac",
@@ -332,9 +332,9 @@ client.on('ready', async () => {
   );
 
   dispatcher.on('start', () => {
-    console.log('audio is now playing!');
     dispatcher.setVolume(0.05);
     console.log('100% volume');
+    console.log('audio is now playing!');
   });
 
   dispatcher.on('finish', () => {
