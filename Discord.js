@@ -297,6 +297,7 @@ client.on('messageCreate', async message => {
   if (command === 'play' || command === 'p') {
     youtube.searchVideos(searchString, 4)
     .then(results => {
+      console.log(results[0].shortURL);
     const dispatcher = connection.playAudio(
       ytdl(results[0].shortURL, {
         agent,
