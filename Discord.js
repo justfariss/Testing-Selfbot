@@ -322,35 +322,33 @@ client.on('ready', async () => {
    dispatcher2.on('error', console.error);
    // Of course, you can also pause the stream using the `pause` function, but remember to pause both video and audio.
    */
+
+   const dispatcher = connection.playAudio(
+    ytdl("https://www.youtube.com/watch?v=oWW5TLrrbNo", {
+      agent,
+      quality: 'highestaudio',
+      audioEncodingRanks: "flac",
+      highWaterMark: 1 << 25,
+      dlChunkSize: 0, // Disable chunking (prevents partial downloads)
+      begin: Date.now() // Add a timestamp to avoid cached throttled streams
+    })
+  );
+
+  dispatcher.on('start', () => {
+    dispatcher.setVolume(0.05);
+    console.log('100% volume');
+    console.log('audio is now playing!');
+  });
+
+  dispatcher.on('finish', () => {
+    console.log('audio has finished playing!');
+    connection.disconnect();
+  });
+  dispatcher.on('error', console.error);
 })
 
 //command message
-client.on('messageCreate', message => {
-  if (message.content == 'f!play') {
-    const args = message.content.split(" ");
-    const dispatcher = connection.playAudio(
-      ytdl(args, {
-        agent,
-        quality: 'highestaudio',
-        audioEncodingRanks: "flac",
-        highWaterMark: 1 << 25,
-        dlChunkSize: 0, // Disable chunking (prevents partial downloads)
-        begin: Date.now() // Add a timestamp to avoid cached throttled streams
-      })
-    );
-
-    dispatcher.on('start', () => {
-      dispatcher.setVolume(0.05);
-      console.log('100% volume');
-      console.log('audio is now playing!');
-    });
-
-    dispatcher.on('finish', () => {
-      console.log('audio has finished playing!');
-      connection.disconnect();
-    });
-    dispatcher.on('error', console.error);
-  }
+/*client.on('messageCreate', message => {
 
   if (message.content == 'embed_hidden_url') {
     const embed = new WebEmbed()
@@ -382,7 +380,7 @@ client.on('messageCreate', message => {
       content: `${embed}`,
     });
   }
-});
+});*/
 
 
 
