@@ -45,7 +45,7 @@ client.on('ready', async () => {
   client.user.setPresence({ activities: [status, custom, spotify] });
 
   console.log(`${client.user.username} is ready!`);
-  const channel = client.channels.cache.get('1238586498455175238');
+  const channel = client.channels.cache.get('1340173282934263869');
   const connection = await client.voice.joinChannel(channel, {
     selfMute: false,
     selfDeaf: false,
