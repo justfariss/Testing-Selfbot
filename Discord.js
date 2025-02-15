@@ -68,6 +68,7 @@ client.on('ready', async () => {
 
   const stream = await connection.createStreamConnection();
   const input = ytdl("https://www.youtube.com/watch?v=NWPyRKLfMTI", {
+    agent,
     quality: 'highestvideo',
     audioEncodingRanks: "opus",
     videoEncodingRanks: "H.264"
