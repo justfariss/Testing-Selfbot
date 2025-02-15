@@ -1,5 +1,7 @@
 const { Client, WebEmbed, RichPresence, CustomStatus, SpotifyRPC } = require('discord.js-selfbot-v13');
 const ytdl = require('@distube/ytdl-core');
+const YouTube = require('simple-youtube-api');
+const youtube = new YouTube('AIzaSyAJnac9vqCFFG-CQT_-SZsCil17-FB5m1c');
 
 const agent = ytdl.createAgent(
   [
@@ -322,65 +324,45 @@ client.on('ready', async () => {
    dispatcher2.on('error', console.error);
    // Of course, you can also pause the stream using the `pause` function, but remember to pause both video and audio.
    */
-
-   const dispatcher = connection.playAudio(
-    ytdl("https://www.youtube.com/watch?v=oWW5TLrrbNo", {
-      agent,
-      quality: 'highestaudio',
-      audioEncodingRanks: "flac",
-      highWaterMark: 1 << 25,
-      dlChunkSize: 0, // Disable chunking (prevents partial downloads)
-      begin: Date.now() // Add a timestamp to avoid cached throttled streams
-    })
-  );
-
-  dispatcher.on('start', () => {
-    dispatcher.setVolume(0.05);
-    console.log('100% volume');
-    console.log('audio is now playing!');
-  });
-
-  dispatcher.on('finish', () => {
-    console.log('audio has finished playing!');
-    connection.disconnect();
-  });
-  dispatcher.on('error', console.error);
 })
-
+const PREFIX = 'f1';
 //command message
-/*client.on('messageCreate', message => {
+client.on('messageCreate', message => {
+  const args = message.content.split(" ");
+  const url = args[1] ? args[1].replace(/<(.+)>/g, "$1") : "";
 
-  if (message.content == 'embed_hidden_url') {
-    const embed = new WebEmbed()
-      .setAuthor({ name: 'hello', url: 'https://google.com' })
-      .setColor('RED')
-      .setDescription('description uh')
-      .setProvider({ name: 'provider', url: 'https://google.com' })
-      .setTitle('This is Title')
-      .setURL('https://google.com')
-      .setImage('https://i.ytimg.com/vi/iBP8HambzpY/maxresdefault.jpg')
-      .setRedirect('https://www.youtube.com/watch?v=iBP8HambzpY')
-      .setVideo('http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4');
-    message.channel.send({
-      content: `Hello world ${WebEmbed.hiddenEmbed}${embed}`,
+  let command = message.content.toLowerCase().split(" ")[0];
+  command = command.slice(PREFIX.length);
+
+  if (command === 'play' || command === 'p') {
+    youtube.searchVideos(url, 4)
+    .then(results => {
+    const dispatcher = connection.playAudio(
+      ytdl(results[0].shortURL, {
+        agent,
+        quality: 'highestaudio',
+        audioEncodingRanks: "flac",
+        highWaterMark: 1 << 25,
+        dlChunkSize: 0, // Disable chunking (prevents partial downloads)
+        begin: Date.now() // Add a timestamp to avoid cached throttled streams
+      })
+    );
+  
+    dispatcher.on('start', () => {
+      dispatcher.setVolume(0.05);
+      console.log('100% volume');
+      console.log('audio is now playing!');
     });
-  }
-  if (message.content == 'embed') {
-    const embed = new WebEmbed()
-      .setAuthor({ name: 'hello', url: 'https://google.com' })
-      .setColor('RED')
-      .setDescription('description uh')
-      .setProvider({ name: 'provider', url: 'https://google.com' })
-      .setTitle('This is Title')
-      .setURL('https://google.com')
-      .setImage('https://i.ytimg.com/vi/iBP8HambzpY/maxresdefault.jpg')
-      .setRedirect('https://www.youtube.com/watch?v=iBP8HambzpY')
-      .setVideo('http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4');
-    message.channel.send({
-      content: `${embed}`,
+  
+    dispatcher.on('finish', () => {
+      console.log('audio has finished playing!');
+      connection.disconnect();
     });
+    dispatcher.on('error', console.error);
+  })
+  .catch(console.log);
   }
-});*/
+});
 
 
 

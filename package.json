@@ -16,6 +16,7 @@
     "ffmpeg": "^0.0.4",
     "fs": "^0.0.1-security",
     "libsodium-wrappers": "^0.7.15",
-    "opusscript": "^0.0.8"
+    "opusscript": "^0.0.8",
+    "simple-youtube-api": "^5.2.1"
   }
 }
