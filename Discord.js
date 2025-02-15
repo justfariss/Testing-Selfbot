@@ -280,16 +280,16 @@ client.on('ready', async () => {
   });
 
   const stream = await connection.createStreamConnection();
-  const input = ytdl("https://www.youtube.com/watch?v=NWPyRKLfMTI", {
+  const input = ytdl("https://www.youtube.com/watch?v=oWW5TLrrbNo", {
     agent,
     quality: 'highestvideo',
-    audioEncodingRanks: "opus",
+    audioEncodingRanks: "flac",
     videoEncodingRanks: "H.264"
   })
 
   const dispatcher = stream.playVideo(input, {
     fps: 60,
-    bitrate: 800,
+    bitrate: 1024,
   });
   const dispatcher2 = stream.playAudio(input);
   //video
